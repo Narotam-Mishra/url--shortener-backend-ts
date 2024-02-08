@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import connectDB from "../config/dbConfig";
+import urlRoute from "../routes/urlRoute";
 
 dotenv.config();
 connectDB();
@@ -18,6 +19,8 @@ server.use(cors());
 server.get("/", (req,res) => {
     res.send("URL Shortener App");
 })
+
+server.use("/api", urlRoute);
 
 const portNo = process.env.PORT || 5151;
 
